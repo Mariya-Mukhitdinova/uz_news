@@ -1,5 +1,6 @@
 from django.contrib import admin
 from news_app.models import CategoryNews, New
+
 # Register your models here.
 
 
