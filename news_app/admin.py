@@ -9,7 +9,6 @@ class CategoryAdminModel(admin.ModelAdmin):
     search_field = ["category_name"]
     list_filter = ["created_at"]
 
-
 @admin.register(New)
 class NewAdminModel(admin.ModelAdmin):
     search_fields = ["new_name"]
