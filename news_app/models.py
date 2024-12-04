@@ -23,7 +23,7 @@ class New(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.new_name, self.new_descr, self.new_image, self.created_at
+        return self.new_name
 
     class Meta:
         verbose_name = "New"

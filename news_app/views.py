@@ -1,12 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import New, CategoryNews
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
+
 def home_page(request):
-    news = New.objects.all()
-    categories = CategoryNews.objects.all()
-    context = {'news': news, 'categories': categories}
-    return render(request, 'index.html', context)
+    try:
+        if request.user.is_authenticated:
+            news = New.objects.all()
+            categories = CategoryNews.objects.all()
+            context = {'news': news, 'categories': categories}
+            return render(request, 'index.html', context)
+
+    except:
+        return redirect('about')
+def about(request):
+    try:
+        if request.user.is_authenticated:
+            redirect('home')
+        return render(request, 'about.html')
+    except:
+        return render(request, 'about.html')
 
 def category_page(request, pk):
     category = CategoryNews.objects.get(id=pk)
